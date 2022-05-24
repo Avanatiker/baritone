@@ -18,9 +18,9 @@
 package baritone.behavior;
 
 import baritone.Baritone;
-import baritone.api.BaritoneAPI;
 import baritone.api.event.events.TickEvent;
 import baritone.utils.ToolSet;
+import com.lambda.client.manager.managers.PlayerInventoryManager;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.entity.EntityPlayerSP;
@@ -91,7 +91,7 @@ public final class InventoryBehavior extends Behavior {
     }
 
     private void swapWithHotBar(int inInventory, int inHotbar) {
-        ctx.playerController().windowClick(ctx.player().inventoryContainer.windowId, inInventory < 9 ? inInventory + 36 : inInventory, inHotbar, ClickType.SWAP, ctx.player());
+        PlayerInventoryManager.INSTANCE.addInventoryTask(new PlayerInventoryManager.ClickInfo(ctx.player().inventoryContainer.windowId, inInventory < 9 ? inInventory + 36 : inInventory, inHotbar, ClickType.SWAP));
     }
 
     private int firstValidThrowaway() { // TODO offhand idk

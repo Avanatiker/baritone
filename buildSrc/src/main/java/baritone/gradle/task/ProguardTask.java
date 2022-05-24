@@ -40,6 +40,7 @@ import org.gradle.process.internal.DefaultExecActionFactory;
 import java.io.*;
 import java.lang.reflect.Field;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.*;
@@ -214,7 +215,7 @@ public class ProguardTask extends BaritoneGradleTask {
 
         // Acquire the RT jar using "java -verbose". This doesn't work on Java 9+
         Process p = new ProcessBuilder(this.getJavaBinPathForProguard(), "-verbose").start();
-        String out = IOUtils.toString(p.getInputStream(), "UTF-8").split("\n")[0].split("Opened ")[1].replace("]", "");
+        String out = IOUtils.toString(p.getInputStream(), StandardCharsets.UTF_8).split("\n")[0].split("Opened ")[1].replace("]", "");
         template.add(2, "-libraryjars '" + out + "'");
 
         // API config doesn't require any changes from the changes that we made to the template

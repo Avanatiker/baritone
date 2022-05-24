@@ -44,6 +44,7 @@
 -keep class baritone.utils.schematic.schematica.**
 #proguard doesnt like it when it cant find our fake schematica classes
 -dontwarn baritone.utils.schematic.schematica.**
+-dontwarn baritone.behavior.InventoryBehavior
 
 # copy all necessary libraries into tempLibraries to build
 

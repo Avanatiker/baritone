@@ -22,13 +22,12 @@ buildscript {
     repositories {
         maven {
             name = 'forge'
-            url = 'http://files.minecraftforge.net/maven'
+            url = 'https://maven.minecraftforge.net/'
         }
         maven {
             name = 'SpongePowered'
-            url = 'https://repo.spongepowered.org/repository/maven-public/'
+            url = 'https://repo.spongepowered.org/maven/'
         }
-        jcenter()
     }
 
     dependencies {
@@ -81,7 +80,7 @@ repositories {
 
     maven {
         name = 'spongepowered-repo'
-        url = 'https://repo.spongepowered.org/repository/maven-public/'
+        url = 'https://repo.spongepowered.org/maven/'
     }
 
     maven {
@@ -91,6 +90,9 @@ repositories {
 }
 
 dependencies {
+    /* Sponsored by Lambda API */
+    implementation files("libs/lambda-3.1-api.jar")
+
     runtime launchCompile('com.github.ImpactDevelopment:SimpleTweaker:1.2')
     runtime launchCompile('org.spongepowered:mixin:0.7.11-SNAPSHOT') {
         // Mixin includes a lot of dependencies that are too up-to-date
@@ -100,7 +102,7 @@ dependencies {
         exclude module: 'commons-io'
         exclude module: 'log4j-core'
     }
-    testImplementation 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.13.2'
 }
 
 mixin {
